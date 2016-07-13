@@ -14,13 +14,14 @@
      };
      return o;
 
-     function createTodo(){}
+
      function getAll(){
        return $http.get('https://quiet-refuge-27140.herokuapp.com/todos')
                    .then(function(response){
                      o.todos = response.data;
                    });
     }
+     function createTodo(){}
      function updateTodo(){}
      function deleteTodo(){}
    }
