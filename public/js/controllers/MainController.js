@@ -3,9 +3,16 @@
   angular.module('ngtodos') //Getter
         .controller('MainController', MainController);
 
-    MainController.$inject = [];
-    function MainController()
+    MainController.$inject = ['$scope', 'TodoService'];
+    function MainController($scope, TodoService)
     {
-      console.log('main');
+      $scope.message = 'testy testing test';
+      console.log(TodoService);
+      var todos = TodoService.todos;
+      TodoService.readAll()
+                  .then(function(response)
+                {
+                  console.log(todos);
+                });
     }
 })();
