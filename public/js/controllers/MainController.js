@@ -1,11 +1,23 @@
-(function(){
+(function()
+{
+angular.module('ngtodos') //getter
+          .controller('MainController', MainController);
 
-  angular.module('ngtodos') //Getter
-        .controller('MainController', MainController);
+   MainController.$inject = ['$scope', 'TodoService'];
 
-    MainController.$inject = [];
-    function MainController()
-    {
-      console.log('main');
+   function MainController($scope, TodoService){
+     $scope.todos = TodoService.todos;
+
+     getTodos();
+
+     function getTodos()
+     {
+       TodoService.readAll()
+                  .then(function()
+                {
+                  $scope.todos = TodoService.todos;
+                  console.log($scope.todos);
+                })
+     }
     }
-})();
+  })();
