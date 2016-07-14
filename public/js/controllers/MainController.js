@@ -8,6 +8,7 @@ angular.module('ngtodos') //getter
    function MainController($scope, TodoService){
      $scope.todos = TodoService.todos;
      $scope.create = createTodo;
+     $scope.delete = deleteTodo;
 
      getTodos();
 
@@ -26,6 +27,15 @@ angular.module('ngtodos') //getter
                   .then(function()
                 {
                   $scope.description = '';
+                  getTodos();
+                })
+     }
+
+     function deleteTodo(id)
+     {
+       TodoService.delete(id)
+                  .then(function()
+                {
                   getTodos();
                 })
      }
